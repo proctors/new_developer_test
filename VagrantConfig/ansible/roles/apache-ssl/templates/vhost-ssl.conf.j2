@@ -1,0 +1,23 @@
+<VirtualHost *:443>
+    
+    ServerAdmin webmaster@localhost
+    DocumentRoot {{ apache.document_root }}
+    
+    <Directory {{ apache.document_root }}>
+        Require all granted
+        AllowOverride All
+        
+        Options -Indexes +FollowSymLinks +MultiViews
+    </Directory>
+    
+    LogLevel warn
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    
+    # SSL configuration
+    SSLEngine on
+    SSLCertificateFile      /etc/ssl/certs/vagrant.crt
+    SSLCertificateKeyFile   /etc/ssl/private/vagrant.key
+    
+</VirtualHost>

@@ -1,0 +1,22 @@
+---
+
+- hosts: all
+  sudo: true
+  
+  pre_tasks:
+    
+    # Update the APT cache, but only if it's more than a day old
+    - name: Update APT cache
+      apt: update_cache=yes cache_valid_time=86400
+  
+  roles:
+    - base
+    - apache
+    - apache-ssl
+    - mysql
+    - php-5.5
+    - php-common
+    - uploadprogress
+    - composer
+    - drush
+

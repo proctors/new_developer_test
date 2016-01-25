@@ -1,0 +1,18 @@
+---
+
+- name: Install PHP packages
+  apt: name={{ item }} state=latest
+  with_items: php.extra_packages
+  notify:
+    - Restart Apache
+
+- name: Set PHP timezone
+  lineinfile:
+    dest={{ item }}
+    regexp="date.timezone ="
+    line="date.timezone = {{ system.timezone }}"
+  with_items:
+    - /etc/php5/apache2/php.ini
+    - /etc/php5/cli/php.ini
+  notify:
+    - Restart Apache

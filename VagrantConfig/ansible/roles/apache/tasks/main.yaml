@@ -1,0 +1,82 @@
+---
+
+# Installs and configures Apache
+
+# Uses the file module to create symlinks rather than calling
+# commands like a2ensite, a2enconf, etc., because file will
+# make the same changes while maintaining idempotence
+
+
+# Install apache2
+
+- name: Install Apache
+  apt: name=apache2 state=latest
+
+
+# Servername config
+
+- name: Add servername config file
+  template:
+    src=servername.conf.j2
+    dest=/etc/apache2/conf-available/servername.conf
+
+- name: Enable servername config
+  file:
+    src=/etc/apache2/conf-available/servername.conf
+    dest=/etc/apache2/conf-enabled/servername.conf
+    state=link
+  notify:
+    - Reload Apache
+
+
+# Change Apache user and group
+
+- name: Set Apache user
+  lineinfile:
+    dest="/etc/apache2/envvars"
+    regexp="export APACHE_RUN_USER="
+    line="export APACHE_RUN_USER=vagrant"
+  notify:
+    - Restart Apache
+
+- name: Set Apache group
+  lineinfile:
+    dest="/etc/apache2/envvars"
+    regexp="export APACHE_RUN_GROUP="
+    line="export APACHE_RUN_GROUP=vagrant"
+  notify:
+    - Restart Apache
+
+
+# Apache modules
+
+- name: Enable Apache modules
+  apache2_module: state=present name={{ item }}
+  with_items: apache.modules
+  notify:
+    - Restart Apache
+
+
+# Vhost config
+
+- name: Disable default vhost
+  file:
+    path=/etc/apache2/sites-enabled/000-default.conf
+    state=absent
+  notify:
+    - Reload Apache
+
+- name: Install vagrant vhost
+  template:
+    src=vhost.conf.j2
+    dest=/etc/apache2/sites-available/vagrant.conf
+  notify:
+    - Reload Apache
+
+- name: Enable vagrant vhost
+  file:
+    src=/etc/apache2/sites-available/vagrant.conf
+    dest=/etc/apache2/sites-enabled/vagrant.conf
+    state=link
+  notify:
+    - Reload Apache

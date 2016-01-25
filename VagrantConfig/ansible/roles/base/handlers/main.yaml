@@ -1,0 +1,14 @@
+---
+
+- name: Configure timezone
+  command: dpkg-reconfigure --frontend noninteractive tzdata
+
+- name: Restart cron
+  service:
+    name=cron
+    state=restarted
+
+- name: Restart syslog
+  service:
+    name=rsyslog
+    state=restarted

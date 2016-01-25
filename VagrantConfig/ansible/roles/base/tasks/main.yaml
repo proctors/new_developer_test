@@ -1,0 +1,22 @@
+---
+
+- name: Install common system packages
+  apt: name={{ item }} state=latest
+  with_items: system.extra_packages 
+
+- name: Add timezone file
+  template:
+    src=timezone.j2
+    dest=/etc/timezone
+  notify:
+    - Configure timezone
+    # Cron and syslog are timezone-dependent, so they should
+    # both be restarted after changing the timezone.
+    - Restart cron
+    - Restart syslog
+
+- name: Update hosts file
+  lineinfile:
+    dest=/etc/hosts
+    line="127.0.0.1 {{ box.hostname }}"
+    state=present

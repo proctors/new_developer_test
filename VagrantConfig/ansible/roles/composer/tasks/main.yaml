@@ -1,0 +1,13 @@
+---
+
+- name: Install Composer
+  shell:
+    curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+    creates=/usr/local/bin/composer
+
+- name: Add Composer to PATH
+  lineinfile:
+    dest=/home/vagrant/.bashrc
+    state=present
+    line='export PATH="$PATH:$HOME/.config/composer/vendor/bin"'
+    insertbefore=BOF

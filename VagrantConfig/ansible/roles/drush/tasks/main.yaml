@@ -1,0 +1,4 @@
+- name: Drush | Install drush
+  action: command composer global require drush/drush creates=/home/vagrant/.config/composer/vendor/bin/drush
+  tags: drush
+  sudo: no

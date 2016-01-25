@@ -1,0 +1,62 @@
+---
+
+## Install packages
+
+- name: Install MySQL
+  apt:
+    name=mysql-server
+    state=latest
+
+# The python-mysqldb package is requried for mysql_user tasks below
+- name: Install Python MySQL package
+  apt:
+    name=python-mysqldb
+    state=latest
+
+
+## Configure MySQL and set user permissions
+
+- name: Install MySQL configuration file
+  template:
+    src=my.cnf.j2
+    dest=/etc/mysql/my.cnf
+  notify:
+    - Restart MySQL
+
+- name: Allow MySQL root connections from anywhere
+  mysql_user:
+    name=root
+    password={{ mysql.root_password }}
+    host=%
+    priv=*.*:ALL,GRANT
+    state=present
+    login_user=root
+    login_password={{ mysql.root_password }}
+    check_implicit_admin=yes
+
+- name: Change MySQL root password
+  mysql_user:
+    name=root
+    password={{ mysql.root_password }}
+    host={{ item }}
+    priv=*.*:ALL,GRANT
+    state=present
+    login_user=root
+    login_password={{ mysql.root_password }}
+    check_implicit_admin=yes
+  with_items:
+    - "{{ box.hostname }}"
+    - 127.0.0.1
+    - ::1
+    - localhost
+    - "%"
+
+
+## Create database
+
+- name: Create MySQL database
+  mysql_db:
+    name={{ mysql.database_name }}
+    state=present
+    login_user=root
+    login_password={{ mysql.root_password }}

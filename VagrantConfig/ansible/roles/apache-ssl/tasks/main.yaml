@@ -1,0 +1,44 @@
+---
+
+# Configures Apache for SSL
+
+# Enable mod_ssl
+
+- name: Enable mod_ssl
+  apache2_module: state=present name=ssl
+  notify:
+    - Restart Apache
+
+
+# Generate self-signed SSL cert
+
+- name: Generate SSL key
+  command:
+    openssl genrsa -out /etc/ssl/private/vagrant.key 2048
+    creates=/etc/ssl/private/vagrant.key
+
+- name: Generate SSL certificate
+  command:
+    openssl req -new -x509 -days 1827
+      -subj "/CN={{ apache.server_name }}"
+      -key /etc/ssl/private/vagrant.key
+      -out /etc/ssl/certs/vagrant.crt
+    creates=/etc/ssl/certs/vagrant.crt
+
+
+# Vhost config
+
+- name: Install vagrant-ssl vhost
+  template:
+    src=vhost-ssl.conf.j2
+    dest=/etc/apache2/sites-available/vagrant-ssl.conf
+  notify:
+    - Reload Apache
+
+- name: Enable vagrant-ssl vhost
+  file:
+    src=/etc/apache2/sites-available/vagrant-ssl.conf
+    dest=/etc/apache2/sites-enabled/vagrant-ssl.conf
+    state=link
+  notify:
+    - Reload Apache
