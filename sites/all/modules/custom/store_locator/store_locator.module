@@ -50,7 +50,7 @@ function store_locator_import($form, &$form_state)
         '#description' => 'Paste your CSV data in here.',
     );
     
-    $form['submit']             = array(
+    $form['submit'] = array(
         '#type' => 'submit',
         '#value' => t('Update'),
     );
