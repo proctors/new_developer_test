@@ -29,6 +29,21 @@ function store_locator_menu()
         'access callback' => TRUE,
     );
     
+    $items['store_locator/list'] = array(
+        'title' => 'List Stores',
+        'description' => 'View all stores',
+        'page callback' => 'store_locator_view_all',
+        'access callback' => TRUE,
+    );
+    
+    $items['store_locator/store/%'] = array(
+        'title' => 'Store Details',
+        'description' => 'View a single store',
+        'page callback' => 'store_locator_view_store',
+        'page arguments' => array(2),
+        'access callback' => TRUE,
+    );
+    
     return $items;
 }
 
@@ -72,9 +87,40 @@ function store_locator_import_submit($form, &$form_state)
     //The CSV data will be in $form_state['values']['csv_data']
     dpm($form_state['values']['csv_data']);
     
-    //HINT: Use str-getcsv to parse the string in to an array
-    //http://php.net/manual/en/function.str-getcsv.php
+    //HINT: Use str-getcsv or fgetcsv to parse the string in to an array
+    //http://php.net/manual/en/function.str-getcsv.php http://php.net/manual/en/function.fgetcsv.php
     
     
     
+}
+
+
+
+
+/**
+ * Functions for the Non Drupal task below
+ *
+ * You can 
+ */
+
+
+
+/*
+ * Do your store lookup in this function and just return the HTML
+ * Access this function by visiting /store_locator/list
+ * Create links to /store_locator/store/{id} for the individual store pages
+ */
+function store_locator_view_all()
+{
+    $html = 'Your HTML Here';
+    return $html;
+}
+
+/*
+ * The store ID is passed straight in to this function
+ */
+function store_locator_view_store($storeId)
+{
+    $html = 'The Store ID is ' . $storeId;
+    return $html;
 }
