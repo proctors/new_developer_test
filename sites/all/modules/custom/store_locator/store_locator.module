@@ -99,8 +99,6 @@ function store_locator_import_submit($form, &$form_state)
 
 /**
  * Functions for the Non Drupal task below
- *
- * You can 
  */
 
 
@@ -112,7 +110,7 @@ function store_locator_import_submit($form, &$form_state)
  */
 function store_locator_view_all()
 {
-    $html = 'Your HTML Here';
+    $html = 'Your HTML Here.';
     return $html;
 }
 
