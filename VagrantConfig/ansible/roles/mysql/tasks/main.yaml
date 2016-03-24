@@ -60,3 +60,11 @@
     state=present
     login_user=root
     login_password={{ mysql.root_password }}
+
+- name: Import Drupal database
+  mysql_db:
+    name={{ mysql.database_name }}
+    state=import
+    login_user=root
+    login_password={{ mysql.root_password }}
+    target={{ mysql.database_dump }}

@@ -27,6 +27,7 @@ VagrantConfig = {
   mysql: {
     root_password: "root",
     database_name: "drupal",
+    database_dump: "/var/www/127.0.0.1drupal14-02-20161418-15.sql"
   },
   php: {
     extra_packages: [
