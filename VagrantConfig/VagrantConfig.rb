@@ -1,6 +1,6 @@
 VagrantConfig = {
   box: {
-    box_name: "drupalinterview.local",
+    box_name: "proctorsdevtest.rb.local",
     box_number: 33,
   },
   system: {
@@ -16,7 +16,7 @@ VagrantConfig = {
     method: :rsync,
   },
   apache: {
-    server_name: "drupalinterview.local",
+    server_name: "proctorsdevtest.local",
     document_root: "/var/www",
     modules: [
       "expires",
@@ -27,7 +27,7 @@ VagrantConfig = {
   mysql: {
     root_password: "root",
     database_name: "drupal",
-    database_dump: "/var/www/127.0.0.1drupal14-02-20161418-15.sql"
+    database_dump: "/var/www/database.sql"
   },
   php: {
     extra_packages: [
