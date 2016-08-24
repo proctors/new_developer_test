@@ -2,7 +2,7 @@
 
 - name: Install common system packages
   apt: name={{ item }} state=latest
-  with_items: system.extra_packages 
+  with_items: "{{ system.extra_packages }}"
 
 - name: Add timezone file
   template:

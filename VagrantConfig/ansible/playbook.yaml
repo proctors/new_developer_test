@@ -1,7 +1,9 @@
 ---
 
 - hosts: all
-  sudo: true
+  # sudo: true
+  become: true
+  become_method: sudo
   
   pre_tasks:
     

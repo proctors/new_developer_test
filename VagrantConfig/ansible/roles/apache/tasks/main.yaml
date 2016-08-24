@@ -52,7 +52,7 @@
 
 - name: Enable Apache modules
   apache2_module: state=present name={{ item }}
-  with_items: apache.modules
+  with_items: "{{ apache.modules }}"
   notify:
     - Restart Apache
 

@@ -4,6 +4,7 @@
 * [Prerequisites](#prerequisites)
 * [Getting Started](#getting-started)
 * [The Test](#the-test)
+* [Submitting the Test](#submitting)
 
 <a name="introduction"></a>
 # Introduction
@@ -15,7 +16,7 @@ This project includes vagrant configuration files and ansible scripts to get it 
 <a name="prerequisites"></a>
 # Prerequisites
 
-You will need Virtual Box and Vagrant installed on your machine:
+If you want to use vagrant, you will need Virtual Box and Vagrant installed on your machine:
 
 * [Virtual Box](https://www.virtualbox.org/)
 * [Vagrant](https://www.vagrantup.com/downloads.html)
@@ -86,3 +87,14 @@ There are instructions depending on whether you want to do the Drupal or Non-Dru
 There are debugging functions, dpm() and dvm(). You will not see the output of these unless you are logged in. 
 
 Access details to log in are in the instructions.
+
+<a name="submitting"></a>
+# Submitting the Test
+
+We will need all the source code back to review your application. You can submit the test back to us in several ways:
+
+1. As a zip file via email/link.
+2. You can fork this repository and send us a link to your fork.
+3. You can send us pull requests.
+
+Option 1 is perferred for privacy. Ideally we should be able to download and unpack your file and then run `vagrant up` to see your code working. Please also submit your CV.

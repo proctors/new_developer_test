@@ -1,7 +1,7 @@
 VagrantConfig = {
   box: {
     box_name: "proctorsdevtest.local",
-    box_number: 33,
+    box_number: 89,
   },
   system: {
     extra_packages: [
