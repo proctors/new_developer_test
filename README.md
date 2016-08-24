@@ -1,4 +1,3 @@
-
 # Contents
 
 * [Introduction](#introduction)
@@ -16,10 +15,10 @@ This project includes vagrant configuration files and ansible scripts to get it 
 <a name="prerequisites"></a>
 # Prerequisites
 
-You will need Virtual Box and Vagrant installed on your machine.
+You will need Virtual Box and Vagrant installed on your machine:
 
-[Virtual Box](https://www.virtualbox.org/)
-[Vagrant](https://www.vagrantup.com/downloads.html)
+* [Virtual Box](https://www.virtualbox.org/)
+* [Vagrant](https://www.vagrantup.com/downloads.html)
 
 You will also need [Ansible](http://docs.ansible.com/ansible/intro_installation.html).
 
