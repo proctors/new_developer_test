@@ -1,6 +1,6 @@
 VagrantConfig = {
   box: {
-    box_name: "proctorsdevtest.rb.local",
+    box_name: "proctorsdevtest.local",
     box_number: 33,
   },
   system: {
