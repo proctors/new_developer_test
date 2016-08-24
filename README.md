@@ -1,14 +1,19 @@
 
 # Contents
 
-[TOC]
+* [Introduction](#introduction)
+* [Prerequisites](#prerequisites)
+* [Getting Started](#getting-started)
+* [The Test](#the-test)
 
+<a name="introduction"></a>
 # Introduction
 
 This project consists of a basic Drupal website and database. The website forms part of the recruitment process for web developers at Proctor + Stevenson.
 
 This project includes vagrant configuration files and ansible scripts to get it up and running quickly. You can of course use your local WAMP or MAMP installation instead if you wish.
 
+<a name="prerequisites"></a>
 # Prerequisites
 
 You will need Virtual Box and Vagrant installed on your machine.
@@ -24,6 +29,7 @@ You will need the following vagrant plugins:
 
 This assumes you've got rsync installed. If you're running Windows, rsync installed with Cygwin or MinGW will be detected by Vagrant and works well. But you can also change the vagrant configuration to use any [sync mechanism you wish](https://www.vagrantup.com/docs/synced-folders/).
 
+<a name="getting-started"></a>
 # Getting Started
 
 Once you've installed the necessary prerequisites, you should be able to navigate to the root directory and run
@@ -64,6 +70,7 @@ vagrant gatling-rsync-auto
 
 This will sync any changes you make to your local files to the vagrant box.
 
+<a name="the-test"></a>
 # The Test
 
 The instructions for the test are located in the project directory at
