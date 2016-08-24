@@ -93,8 +93,8 @@ Access details to log in are in the instructions.
 
 We will need all the source code back to review your application. You can submit the test back to us in several ways:
 
-1. As a zip file via email/link.
+1. Email as a zip file/download link to [recruitment@proctors.co.uk](mailto:recruitment@proctors.co.uk).
 2. You can fork this repository and send us a link to your fork.
 3. You can send us pull requests.
 
-Option 1 is perferred for privacy. Ideally we should be able to download and unpack your file and then run `vagrant up` to see your code working. Please also submit your CV.
+Option 1 is perferred for privacy. Ideally we should be able to download and unpack your file and then run `vagrant up` to see your code working. Please also submit your CV, ensuring you list your name and the role you are applying for in the subject line.
