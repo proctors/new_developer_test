@@ -25,7 +25,7 @@ You will also need [Ansible](http://docs.ansible.com/ansible/intro_installation.
 
 You will need the following vagrant plugins:
 
-[Vagrant Gatlin Rsync](https://github.com/smerrill/vagrant-gatling-rsync)
+[Vagrant Gatling Rsync](https://github.com/smerrill/vagrant-gatling-rsync)
 
 This assumes you've got rsync installed. If you're running Windows, rsync installed with Cygwin or MinGW will be detected by Vagrant and works well. But you can also change the vagrant configuration to use any [sync mechanism you wish](https://www.vagrantup.com/docs/synced-folders/).
 
