@@ -97,6 +97,7 @@ node_modules
 
 ### Vagrant ###
 .vagrant/
+*.retry
 
 
 ### Eclipse ###
@@ -169,6 +170,8 @@ nbactions.xml
 # sftp configuration file
 sftp-config.json
 
+### PHP Storm ###
+.idea
 
 ### Composer ###
 composer.phar
