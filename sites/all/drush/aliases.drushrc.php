@@ -9,9 +9,9 @@ $rootPath = str_replace("/sites/all/drush", "", __DIR__);
 
 $aliases["vagrant"] = array(
     "os" => "linux",
-    "remote-host" => "10.10.10.33",
+    "remote-host" => "10.10.10.89",
     "remote-user" => "vagrant",
-    "ssh-options" => "-i $rootPath/.vagrant/machines/drupalinterview.local/virtualbox/private_key",
+    "ssh-options" => "-i $rootPath/.vagrant/machines/proctorsdevtest.local/virtualbox/private_key",
     "root" => "/var/www",
-    "uri" => "drupalinterview.local",
+    "uri" => "proctorsdevtest.local",
 );
