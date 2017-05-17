@@ -49,13 +49,13 @@ The database user is "root" and the password is "root".
 Once vagrant has finished creating the box, you'll see a bunch of information about it, this includes the IP address of the box, which should be:
 
 ```
-10.10.10.33
+10.10.10.89
 ```
 
 You'll need to configure your hosts file to point the URL to that IP (or your local IP if you are not using vagrant).
 
 ```
-10.10.10.33 proctorsdevtest.local
+10.10.10.89 proctorsdevtest.local
 ```
 
 Then you should be able to access the site at:
