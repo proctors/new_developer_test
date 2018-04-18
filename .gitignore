@@ -99,23 +99,6 @@ node_modules
 .vagrant/
 *.retry
 
-
-### Eclipse ###
-*.pydevproject
-.metadata
-bin/
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.settings/
-.loadpath
-
-# Eclipse Core
-.project
-
 # External tool builders
 .externalToolBuilders/
 
@@ -180,3 +163,6 @@ composer.phar
 # Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
 # composer.lock
+
+### Docker ###
+docker/mysql/data

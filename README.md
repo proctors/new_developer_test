@@ -11,23 +11,16 @@
 
 This project consists of a basic Drupal website and database. The website forms part of the recruitment process for web developers at Proctor + Stevenson.
 
-This project includes vagrant configuration files and ansible scripts to get it up and running quickly. You can of course use your local WAMP or MAMP installation instead if you wish.
+This project includes a docker configuration files to help get it up and running quickly. You can of course use your local WAMP or MAMP installation instead if you wish.
 
 <a name="prerequisites"></a>
 # Prerequisites
 
-If you want to use vagrant, you will need Virtual Box and Vagrant installed on your machine:
+If you want to use docker, you will need Docker installed on your machine:
 
-* [Virtual Box](https://www.virtualbox.org/)
-* [Vagrant](https://www.vagrantup.com/downloads.html)
+[https://www.docker.com/community-edition](https://www.docker.com/community-edition)
 
-You will also need [Ansible](http://docs.ansible.com/ansible/intro_installation.html).
-
-You will need the following vagrant plugins:
-
-[Vagrant Gatling Rsync](https://github.com/smerrill/vagrant-gatling-rsync)
-
-This assumes you've got rsync installed. If you're running Windows, rsync installed with Cygwin or MinGW will be detected by Vagrant and works well. But you can also change the vagrant configuration to use any [sync mechanism you wish](https://www.vagrantup.com/docs/synced-folders/).
+You will also need docker-compose. Which should be available using the community edition of Docker (above). 
 
 <a name="getting-started"></a>
 # Getting Started
