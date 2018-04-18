@@ -11,7 +11,7 @@
 
 This project consists of a basic Drupal website and database. The website forms part of the recruitment process for web developers at Proctor + Stevenson.
 
-This project includes a docker configuration files to help get it up and running quickly. You can of course use your local WAMP or MAMP installation instead if you wish.
+This project includes a docker-compose configuration file to help get it up and running quickly. You can of course use your local WAMP or MAMP installation instead if you wish.
 
 <a name="prerequisites"></a>
 # Prerequisites
@@ -43,15 +43,13 @@ This will import the base database into the mysql container, proctorsdevtest_db.
 /database.sql
 ```
 
-The database user is "root" and the password is "root".
-
-You'll need to configure your hosts file to point the URL to the docker image (or your local IP if you are not using vagrant).
+You'll need to configure your hosts file to point the URL to the docker image (or your local IP if you are not using docker).
 
 ```
 127.0.0.1 proctorsdevtest.local
 ```
 
-In order not to clash with any local version of apache or mysql you have running on ports 80 and 3306, the docker container exposes ports for you to connect to:
+In order not to clash with any local version of apache or mysql you may have running on ports 80 or 3306, the docker container exposes alternative ports for you to connect to:
 
 ```
 http: 5000:80
@@ -62,7 +60,15 @@ This means you can access the site at
 
 [http://proctorsdevtest.local:5000](http://proctorsdevtest.local:5000)
 
-The project files are mouted directly into the docker container, proctorsdevtest_web, so any changes will be immediately reflected.
+The project files are mounted directly into the docker container, proctorsdevtest_web, so any changes will be immediately reflected.
+
+You can connect directly to proctorsdevtest_db at:
+
+``` 
+mysql -u root -p -h 127.0.0.1 -P 3307
+```
+
+The database user is "root" and the password is "root".
 
 <a name="the-test"></a>
 # The Test
