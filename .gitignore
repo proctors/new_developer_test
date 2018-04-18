@@ -94,11 +94,6 @@ node_modules
 .sass-cache/
 *.css.map
 
-
-### Vagrant ###
-.vagrant/
-*.retry
-
 # External tool builders
 .externalToolBuilders/
 

@@ -28,10 +28,16 @@ You will also need docker-compose. Which should be available using the community
 Once you've installed the necessary prerequisites, you should be able to navigate to the root directory and run
 
 ```
-vagrant up
+docker-compose up
 ```
 
-This will configure the box, and run the ansible scripts. The database for the project should be automatically installed, but if it is not, or you are not using vagrant, it is in the root of this directory:
+This will download the necessary docker images and build the containers and then start outputting log files. In a new window, at the root of the project, run:
+
+```
+docker/bin/mysqlimport
+```
+
+This will import the base database into the mysql container, proctorsdevtest_db. If you are using native apache and mysql, you can import the database yourself:
 
 ```
 /database.sql
@@ -39,29 +45,24 @@ This will configure the box, and run the ansible scripts. The database for the p
 
 The database user is "root" and the password is "root".
 
-Once vagrant has finished creating the box, you'll see a bunch of information about it, this includes the IP address of the box, which should be:
+You'll need to configure your hosts file to point the URL to the docker image (or your local IP if you are not using vagrant).
 
 ```
-10.10.10.89
+127.0.0.1 proctorsdevtest.local
 ```
 
-You'll need to configure your hosts file to point the URL to that IP (or your local IP if you are not using vagrant).
+In order not to clash with any local version of apache or mysql you have running on ports 80 and 3306, the docker container exposes ports for you to connect to:
 
 ```
-10.10.10.89 proctorsdevtest.local
+http: 5000:80
+mysql: 3307:3306
 ```
 
-Then you should be able to access the site at:
+This means you can access the site at
 
-[http://proctorsdevtest.local](http://proctorsdevtest.local)
+[http://proctorsdevtest.local:5000](http://proctorsdevtest.local:5000)
 
-To initiate the vagrant rsync, you can run (if it hasn't started automatically):
-
-```
-vagrant gatling-rsync-auto
-```
-
-This will sync any changes you make to your local files to the vagrant box.
+The project files are mouted directly into the docker container, proctorsdevtest_web, so any changes will be immediately reflected.
 
 <a name="the-test"></a>
 # The Test
@@ -74,6 +75,15 @@ The instructions for the test are located in the project directory at
 
 There are instructions depending on whether you want to do the Drupal or Non-Drupal test. Which test you do is entirely up to you. **You don't have to do both.**
 
+**Also, if you are applying for the senior developer role, there are additional instructions.** 
+
+# Drush
+
+You can run drush in the docker container if you wish:
+
+```
+docker/bin/drush status
+```
 
 ## If you are not familiar with Drupal
 
@@ -86,6 +96,6 @@ Access details to log in are in the instructions.
 
 We will need all the source code back to review your application. You can submit the via email attached as a zip file or download link and send to [recruitment@proctors.co.uk](mailto:recruitment@proctors.co.uk).
 
-Ideally we should be able to download and unpack your files and then run `vagrant up` to see your code working. 
+Ideally we should be able to download and unpack your files and then run `docker-compose up` and `docker/bin/mysqlimport` to see your code working. 
 
 **Please also submit your CV, ensuring you list your name and the role you are applying for in the subject line.**

@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+    web:
+        container_name: proctorsdevtest_web
+        build: docker
+        ports:
+            - 5000:80
+        volumes:
+            - .:/var/www:delegated
+        links :
+            - db:drupal_db
+        depends_on:
+            - db
+
+    db:
+        container_name: proctorsdevtest_db
+        image: mysql
+        ports:
+            - 3307:3306
+        volumes:
+            - ./docker/mysql/data:/var/lib/mysql
+        environment:
+            - MYSQL_DATABASE=drupal
+            - MYSQL_ROOT_PASSWORD=root
